@@ -1,5 +1,4 @@
 from camera.camera_class import camera
-import time
 
 # 고속카메라 이미지 저장하는 객체 생성 : image_saver
 image_saver = camera.ImageSaver()
@@ -16,9 +15,14 @@ for i in range(400):
     # ex) image_saver.save_images(2, 2) -> 20230524_15시45분03초_img_2_1, 20230524_15시45분03초_img_2_2 와 같이 파일 2개 생성
     image_saver.save_images(1, i)
 
+# 고속카메라 연결 종료 함수 실행
+image_saver.cam_close()
+
 # 아래는 예시
 # 무한 반복문에서는 아래와 같이 사용하면 초당 100장 저장(약간의 오차 발생)
 ###################################################################
+# import time
+
 # last_time = time.perf_counter()
 # num_img_to_save = 1
 # img_num = 1
@@ -40,6 +44,3 @@ for i in range(400):
 #         time.sleep(0.01)
 #     last_time = time.perf_counter()
 ###################################################################
-
-# 고속카메라 연결 종료 함수 실행
-image_saver.cam_close()
